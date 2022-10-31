@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import img from "../../assets/images/login/login.svg";
 
-const Login = () => {
-  const handleLogin = (event) => {
+const SignUp = () => {
+  const handleSignUp = (event) => {
     event.preventDefault();
   };
 
@@ -14,9 +14,20 @@ const Login = () => {
           <img className="w-3/4" src={img} alt="" />
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100  py-20">
-          <h1 className="text-5xl text-center font-bold">Login </h1>
+          <h1 className="text-5xl text-center font-bold">Sign Up </h1>
 
-          <form onSubmit={handleLogin} className="card-body">
+          <form onSubmit={handleSignUp} className="card-body">
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Full Name</span>
+              </label>
+              <input
+                name="name"
+                type="text"
+                placeholder="Name"
+                className="input input-bordered"
+              />
+            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -26,6 +37,7 @@ const Login = () => {
                 type="text"
                 placeholder="email"
                 className="input input-bordered"
+                required
               />
             </div>
             <div className="form-control">
@@ -37,21 +49,21 @@ const Login = () => {
                 type="text"
                 placeholder="password"
                 className="input input-bordered"
+                required
               />
-              <label className="label">
-                <a href="#/" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
-              </label>
             </div>
             <div className="form-control mt-6">
-              <input className="btn btn-primary" type="submit" value="Login" />
+              <input
+                className="btn btn-primary"
+                type="submit"
+                value="Sign Up"
+              />
             </div>
           </form>
           <p className="text-center">
-            New to Genius Car{" "}
-            <Link className="text-orange-600 font-bold" to="/signup">
-              SignUp
+            Already Have an Account?
+            <Link className="text-orange-600 font-bold" to="/login">
+              Log In
             </Link>
           </p>
         </div>
@@ -60,4 +72,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
