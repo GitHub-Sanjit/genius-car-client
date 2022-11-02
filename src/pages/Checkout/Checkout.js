@@ -23,6 +23,22 @@ const Checkout = () => {
       phone,
       message,
     };
+
+    fetch("http://localhost:5000/orders", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(order),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          alert("Order placed successfully");
+          form.reset();
+        }
+      })
+      .catch((err) => console.error(err));
   };
 
   return (
@@ -48,6 +64,7 @@ const Checkout = () => {
             type="number"
             placeholder="Your Phone"
             className="input input-ghost w-full input-bordered "
+            required
           />
           <input
             name="email"
@@ -62,6 +79,7 @@ const Checkout = () => {
           name="message"
           className="textarea textarea-bordered h-24 w-full"
           placeholder="Your Message"
+          required
         ></textarea>
         <input className="btn" type="submit" value="Place Your Order" />
       </form>
